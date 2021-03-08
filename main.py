@@ -22,8 +22,8 @@ def run():
 
 
 def keep_alive():
-	server.start()
-
+    server = Thread(target=run)
+    server.start()
 
 keep_alive()
 
@@ -39,7 +39,7 @@ while True:
 		    '--output', '-'
 		],
 		                          stdout=subprocess.PIPE).stdout
-		if prev_response != response and len(response) > 30000:
+		if prev_response != response and len(response) > 34000:
 			file_name = time.strftime("images/%Y%m%dT%H%M%SZ.jpg",
 			                          time.localtime())
 			with open(file_name, 'wb') as image_file:
